@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>동유럽 가족 여행 · 2026년 5월</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2235;
+    --navy-light: #243050;
+    --gold: #c9973a;
+    --gold-light: #e8c077;
+    --cream: #f5f0e8;
+    --cream-dim: #d6cfc0;
+    --white: #ffffff;
+    --text: #2c2c2c;
+    --text-muted: #6b6560;
+    --vienna: #8B1A2B;
+    --vienna-light: #fce8ec;
+    --salzburg: #B8762A;
+    --salzburg-light: #fdf3e3;
+    --lake: #1A5F8A;
+    --lake-light: #d6eaf8;
+    --czech: #2D5A3D;
+    --czech-light: #e8f5ee;
+    --prague: #5B3987;
+    --prague-light: #ede0f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(201,151,58,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(91,57,135,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--cream-dim);
+    margin-bottom: 48px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 12px 32px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    margin-bottom: 64px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-cities {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.0s forwards;
+  }
+
+  .hero-city {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .hero-city + .hero-city::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .hero-city-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  }
+
+  /* ── NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,34,53,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,151,58,0.2);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .sticky-nav::-webkit-scrollbar { display: none; }
+
+  .nav-items {
+    display: flex;
+    gap: 4px;
+    padding: 8px 0;
+    white-space: nowrap;
+  }
+
+  .nav-item {
+    padding: 6px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-item:hover {
+    color: var(--gold-light);
+    background: rgba(201,151,58,0.1);
+  }
+
+  .nav-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── OVERVIEW ── */
+  .overview {
+    background: var(--navy);
+    padding: 80px 24px;
+    color: var(--white);
+  }
+
+  .section-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .overview-card {
+    background: var(--navy-light);
+    padding: 28px 24px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .overview-card:hover {
+    border-top-color: var(--gold);
+  }
+
+  .ov-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .ov-city {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .ov-en {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+
+  .ov-dates {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+
+  .ov-nights {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+  .ov-transport {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+  }
+
+  /* ── CITY SECTION ── */
+  .city-section {
+    padding: 80px 24px;
+  }
+
+  .city-section.alt {
+    background: #f0ebe0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .city-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .city-header-left {}
+
+  .city-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 0.8;
+    margin-bottom: 8px;
+    opacity: 0.12;
+  }
+
+  .city-name-block {}
+
+  .city-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .city-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    opacity: 0.4;
+    letter-spacing: 0.15em;
+    font-style: italic;
+  }
+
+  .city-info-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .info-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: rgba(255,255,255,0.7);
+    color: var(--text);
+  }
+
+  /* ── ATTRACTIONS ── */
+  .attractions-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .attraction-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .attraction-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .attraction-photo {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    background: #e8e0d0;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #ede8df, #ddd8ce);
+  }
+
+  .photo-placeholder svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.35;
+  }
+
+  .attraction-body {
+    padding: 18px 20px;
+  }
+
+  .attraction-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .attraction-sub {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .attraction-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Special event */
+  .special-event {
+    background: linear-gradient(135deg, #fff9ed, #fef3d0);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .event-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .event-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .event-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .event-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ── HOTELS ── */
+  .hotels-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .hotel-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
+    position: relative;
+  }
+
+  .hotel-card.recommended {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1), 0 16px 40px rgba(0,0,0,0.08);
+  }
+
+  .hotel-plan-bar {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hotel-plan-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .hotel-rec-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .hotel-photo {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hotel-body {
+    padding: 22px 24px;
+  }
+
+  .hotel-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .hotel-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+
+  .hotel-spec {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .spec-label {
+    font-weight: 500;
+    min-width: 48px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .spec-value {
+    color: var(--text);
+  }
+
+  .hotel-space-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .hotel-pros {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hotel-pro {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .hotel-pro-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-top: 8px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .hotel-note {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── TAUERN SPA (confirmed) ── */
+  .confirmed-hotel {
+    background: var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 28px 28px;
+    color: var(--white);
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .confirmed-hotel { grid-template-columns: 1fr; }
+  }
+
+  .confirmed-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 10px;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .confirmed-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .confirmed-spec {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .confirmed-spec-label {
+    color: var(--gold-light);
+    font-weight: 500;
+    min-width: 48px;
+    flex-shrink: 0;
+  }
+
+  .confirmed-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    object-fit: cover;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .confirmed-photo-ph {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 13px;
+    border: 1px dashed rgba(255,255,255,0.15);
+  }
+
+  /* ── DIVIDER ── */
+  .transport-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  .transport-divider::before,
+  .transport-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+  }
+
+  .transport-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 20px;
+    white-space: nowrap;
+    background: var(--white);
+    font-size: 13px;
+  }
+
+  /* ── TIPS ── */
+  .tips-section {
+    background: var(--navy);
+    padding: 64px 24px;
+    color: var(--white);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .tip-card {
+    padding: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+  }
+
+  .tip-emoji {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .tip-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .tip-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111825;
+    padding: 40px 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.25);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  footer .gold { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .city-section { padding: 56px 16px; }
+    .overview { padding: 56px 16px; }
+    .hotels-grid { grid-template-columns: 1fr; }
+    .attractions-grid { grid-template-columns: 1fr; }
+    .city-header { flex-direction: column; align-items: flex-start; }
+    .confirmed-hotel { padding: 20px; }
+  }
+
+  /* ── CAROUSEL ── */
+  .carousel { position: relative; overflow: hidden; background: #e8e0d0; }
+  .carousel-inner { display: flex; transition: transform 0.42s cubic-bezier(.4,0,.2,1); }
+  .carousel-inner > img,
+  .carousel-inner > .cph {
+    min-width: 100%; width: 100%;
+    aspect-ratio: 16/9; object-fit: cover;
+    display: block; flex-shrink: 0;
+    pointer-events: none; user-select: none;
+  }
+  .cph {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 6px;
+    background: linear-gradient(135deg,#ede8df,#ddd8ce);
+    font-size: 12px; color: rgba(0,0,0,.3); text-align: center; padding: 8px;
+    pointer-events: auto; cursor: default;
+  }
+  .cbtn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,.38); color: #fff; border: none;
+    width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; font-size: 14px; z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s; -webkit-tap-highlight-color: transparent;
+  }
+  .cbtn:hover { background: rgba(0,0,0,.68); }
+  .cprev { left: 8px; } .cnext { right: 8px; }
+  .cdots {
+    position: absolute; bottom: 8px;
+    left: 50%; transform: translateX(-50%);
+    display: flex; gap: 5px; z-index: 5;
+  }
+  .cdot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,.45); cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .cdot.on { background: #fff; transform: scale(1.3); }
+  .ccnt {
+    position: absolute; top: 8px; right: 10px;
+    background: rgba(0,0,0,.42); color: #fff;
+    font-size: 11px; padding: 2px 8px; border-radius: 10px; z-index: 5;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">Family Trip · 2026</div>
+  <h1 class="hero-title">동유럽<br>가족 여행</h1>
+  <p class="hero-subtitle">오스트리아 · 체코 &nbsp;·&nbsp; 9박 10일</p>
+  <div class="hero-badge">5월 15일 금요일 — 5월 25일 월요일</div>
+  <div class="hero-cities">
+    <div class="hero-city">
+      <div class="hero-city-dot" style="background:#8B1A2B;"></div>
+      비엔나
+    </div>
+    <div class="hero-city">
+      <div class="hero-city-dot" style="background:#B8762A;"></div>
+      잘츠부르크
+    </div>
+    <div class="hero-city">
+      <div class="hero-city-dot" style="background:#1A5F8A;"></div>
+      잘츠카머구트
+    </div>
+    <div class="hero-city">
+      <div class="hero-city-dot" style="background:#2D5A3D;"></div>
+      체스키크룸로프
+    </div>
+    <div class="hero-city">
+      <div class="hero-city-dot" style="background:#5B3987;"></div>
+      프라하
+    </div>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ── NAV ── -->
+<nav class="sticky-nav">
+  <div class="nav-items">
+    <a href="#overview" class="nav-item">전체 일정</a>
+    <a href="#vienna" class="nav-item"><span class="nav-dot" style="background:#8B1A2B;"></span>비엔나</a>
+    <a href="#salzburg" class="nav-item"><span class="nav-dot" style="background:#B8762A;"></span>잘츠부르크</a>
+    <a href="#lake" class="nav-item"><span class="nav-dot" style="background:#1A5F8A;"></span>잘츠카머구트</a>
+    <a href="#czech" class="nav-item"><span class="nav-dot" style="background:#2D5A3D;"></span>체스키크룸로프</a>
+    <a href="#prague" class="nav-item"><span class="nav-dot" style="background:#5B3987;"></span>프라하</a>
+    <a href="#tips" class="nav-item">여행 팁</a>
+  </div>
+</nav>
+
+<!-- ── OVERVIEW ── -->
+<section class="overview" id="overview">
+  <div class="container">
+    <span class="section-eyebrow">Itinerary Overview</span>
+    <h2 class="section-title">전체 여행 일정</h2>
+    <div class="overview-grid reveal">
+      <a href="#vienna" style="text-decoration:none;" class="overview-card">
+        <div class="ov-num">01</div>
+        <div class="ov-city">비엔나</div>
+        <div class="ov-en">Wien, Austria</div>
+        <div class="ov-dates">5/15 (금) ~ 5/18 (월)</div>
+        <div class="ov-nights">3박</div>
+        <div class="ov-transport">✈ 인천 직항 도착 (KE937 16:20)</div>
+      </a>
+      <a href="#salzburg" style="text-decoration:none;" class="overview-card">
+        <div class="ov-num">02</div>
+        <div class="ov-city">잘츠부르크</div>
+        <div class="ov-en">Salzburg, Austria</div>
+        <div class="ov-dates">5/18 (월) ~ 5/19 (화)</div>
+        <div class="ov-nights">1박</div>
+        <div class="ov-transport">🚂 기차 (레일젯) 약 2시간 30분</div>
+      </a>
+      <a href="#lake" style="text-decoration:none;" class="overview-card">
+        <div class="ov-num">03</div>
+        <div class="ov-city">잘츠카머구트</div>
+        <div class="ov-en">Salzkammergut, Austria</div>
+        <div class="ov-dates">5/19 (화) ~ 5/21 (목)</div>
+        <div class="ov-nights">2박</div>
+        <div class="ov-transport">🚗 렌터카 (잘츠부르크 픽업)</div>
+      </a>
+      <a href="#czech" style="text-decoration:none;" class="overview-card">
+        <div class="ov-num">04</div>
+        <div class="ov-city">체스키크룸로프</div>
+        <div class="ov-en">Český Krumlov, Czech</div>
+        <div class="ov-dates">5/21 (목) ~ 5/22 (금)</div>
+        <div class="ov-nights">1박</div>
+        <div class="ov-transport">🚗 렌터카 약 2시간 30분</div>
+      </a>
+      <a href="#prague" style="text-decoration:none;" class="overview-card">
+        <div class="ov-num">05</div>
+        <div class="ov-city">프라하</div>
+        <div class="ov-en">Praha, Czech Republic</div>
+        <div class="ov-dates">5/22 (금) ~ 5/25 (월)</div>
+        <div class="ov-nights">3박</div>
+        <div class="ov-transport">🚗 렌터카 이동 후 반납 · 5/25 19:05 귀국</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ -->
+<!-- ── VIENNA ── -->
+<!-- ══════════════════════════════════ -->
+<section class="city-section" id="vienna">
+  <div class="container">
+    <div class="city-header reveal">
+      <div class="city-header-left">
+        <div class="city-num" style="color:var(--vienna);">01</div>
+        <div class="city-name-block">
+          <h2 class="city-name" style="color:var(--vienna);">비엔나</h2>
+          <div class="city-name-en">Wien, Austria</div>
+        </div>
+      </div>
+      <div class="city-info-bar">
+        <span class="info-pill">📅 5월 15일 ~ 18일</span>
+        <span class="info-pill" style="background:var(--vienna);color:#fff;border-color:var(--vienna);">3박</span>
+        <span class="info-pill">✈ 직항 도착</span>
+      </div>
+    </div>
+
+    <!-- Special Event -->
+    <div class="special-event reveal">
+      <div class="event-icon">🎭</div>
+      <div>
+        <div class="event-label">Special Event</div>
+        <div class="event-title">5월 16일 (토) 저녁 7시 · 빈 국립 오페라 극장</div>
+        <div class="event-desc">발레 &lt;마농&gt; 공연 관람 — 세계 3대 오페라 극장에서 즐기는 특별한 저녁</div>
+      </div>
+    </div>
+
+    <!-- Attractions -->
+    <div class="attractions-title reveal">주요 관광지</div>
+    <div class="attractions-grid">
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG" alt="쇤브룬 궁전" loading="lazy">
+    <img src="https://www.palaceconcertsvienna.com/fileadmin/_processed_/4/3/csm_7_Grosse_Galerie__c__SKB__Foto_Agentur_Zolles_574291c4a3.jpg" alt="쇤브룬 궁전" loading="lazy">
+    <img src="https://concert-vienna.com/cdn/shop/articles/schonbrunn-min_1024x.jpg?v=1502201578" alt="쇤브룬 궁전" loading="lazy">
+<img src="https://www.wien.info/resource/image/470432/3x2/894/596/673914215887f5db4c855af306942887/FBB51A71519FEC086FF1460A15F31881/schloss-schoenbrunn-vieux-laque-zimmer.webp" alt="쇤브룬 궁전" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">쇤브룬 궁전</div>
+          <div class="attraction-sub" style="color:var(--gold);">합스부르크 황가 여름 별궁</div>
+          <div class="attraction-desc">1,441개의 방 · 황제 투어 · 아름다운 정원과 글로리에테 전망대. 엘리베이터 이용 가능해 편안하게 관람.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://secretvienna.org/wp-content/uploads/2022/07/1024px-Wien_-_Schloss_Belvedere_oberes_1.jpg" alt="벨베데레 궁전" loading="lazy">
+    <img src="https://www.belvedere.at/sites/default/files/2026-02/Johannes_Stoll.jpg" alt="벨베데레 궁전" loading="lazy">
+    <img src="https://i.pinimg.com/736x/b8/11/7d/b8117dc889f73502bf61ba562fef106f.jpg" alt="벨베데레 궁전" loading="lazy">
+    <img src="https://www.robertharding.com/watermark.php?type=preview&im=RM/RH/HORIZONTAL/1126-894" alt="벨베데레 궁전" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">벨베데레 궁전</div>
+          <div class="attraction-sub" style="color:var(--gold);">클림트 '키스' 원화 소장</div>
+          <div class="attraction-desc">상·하 벨베데레 두 개의 궁전 · 클림트와 실레 원화 · 화려한 바로크 정원.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://secretvienna.org/wp-content/uploads/2022/07/Gastroparadies-Naschmarkt_FB.jpg" alt="나슈마르크트" loading="lazy">
+    <img src="https://www.wien.info/resource/image/305544/Video-Header/1920/1080/c31b70b5580e4835f7885c94bbd3925f/1536E98A0C3E7763F4104403AA137E2E/51483-naschmarkt-wiener-maerkte.webp" alt="나슈마르크트" loading="lazy">
+    <img src="https://www.top10vienna.com/assets/dynamic_image/sbs/photo_8456_26549.jpg" alt="나슈마르크트" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">나슈마르크트</div>
+          <div class="attraction-sub" style="color:var(--gold);">비엔나 최대 재래시장</div>
+          <div class="attraction-desc">신선한 식재료 · 카페 · 레스토랑 밀집. <strong>토요일 06:30~15:00</strong>에는 벼룩시장도 열려요.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://museumofwander.com/wp-content/uploads/2024/07/DSC03304-Enhanced-NR-scaled.jpg" alt="빈 미술사 박물관" loading="lazy">
+    <img src="https://meeting.vienna.info/resource/image/441362/19x10/1200/630/44aa4a3fc2d7f25907216ca85f5b3055/B1C93BDBB6813BBA17E124F6F83DCEA2/khm-aussenansicht.jpg" alt="빈 미술사 박물관" loading="lazy">
+    <img src="https://www.civitatis.com/f/austria/viena/entrada-museo-historia-arte-viena-589x392.jpg" alt="빈 미술사 박물관" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">빈 미술사 박물관</div>
+          <div class="attraction-sub" style="color:var(--gold);">세계 최고 수준의 미술관</div>
+          <div class="attraction-desc">루벤스 · 베르메르 · 라파엘 원화 · 그리스·이집트 컬렉션.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://coeser.de/blog/wp-content/uploads/2017/07/staatsoper-wien-aufmacher-sonnenuntergang-christian-oeser.jpg" alt="빈 국립 오페라 극장" loading="lazy">
+    <img src="https://www.viennapass.de/fileadmin/_processed_/7/3/csm_300dpi_N0A3398_Palisis-min_be4e2f62e4.jpg" alt="빈 국립 오페라 극장" loading="lazy">    
+<img src="https://www.wiener-staatsoper.at/cdn-cgi/image//files/Produktionen/2_Ballett/Manon/2025-26/MacMillan_Manon_TMayerhofer_OEsina_KKourlaev_FOTO_NN.jpg" alt="빈 국립 오페라 극장" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">빈 국립 오페라 극장</div>
+          <div class="attraction-sub" style="color:var(--gold);">세계 3대 오페라 극장</div>
+          <div class="attraction-desc">화려한 내부 투어 · 5월 16일 발레 &lt;마농&gt; 공연 예정.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://cdn.craft.cloud/101e4579-0e19-46b6-95c6-7eb27e4afc41/assets/uploads/pois/St._Stephens_Cathedral__Vienna__Austria.webp" alt="슈테판 대성당" loading="lazy">
+    <img src="https://www.stephanskirche.at/img/visit01.jpg" alt="슈테판 대성당" loading="lazy">
+    <img src="https://www.stephanskirche.at/img/service01.jpg" alt="슈테판 대성당" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--vienna);">슈테판 대성당</div>
+          <div class="attraction-sub" style="color:var(--gold);">비엔나의 심장부</div>
+          <div class="attraction-desc">고딕 양식 · 북탑 엘리베이터 · 구시가지 광장 정중앙.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotels -->
+    <div class="hotels-title reveal">숙소 비교 — 3박 (5/15 ~ 5/18)</div>
+    <div class="hotels-grid">
+      <!-- 1안 -->
+      <div class="hotel-card recommended reveal">
+        <div class="hotel-plan-bar" style="background:var(--vienna);">
+          <span class="hotel-plan-label">1안 · 에어비앤비 아파트</span>
+          <span class="hotel-rec-badge">추천</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/1308525b-63c5-4cf1-9355-550b73fe4f00.jpeg?im_w=1200" loading="lazy">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/ae77950b-b1b0-41f1-847d-f8d0359e900d.jpeg?im_w=1200" loading="lazy">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/760bac9a-cfd4-4fa3-96d8-4ed21dfacba1.jpeg?im_w=1200" loading="lazy">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/5a5b08b2-53b1-4649-8d70-57662cf79c94.jpeg?im_w=1200" loading="lazy">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/e5539b54-74be-477e-83a4-9f10d69b9823.jpeg?im_w=1200" loading="lazy">
+<img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE3NzM4NDI2MTQ1OTY5NTg5NA%3D%3D/original/dbe15850-2c76-4630-bdc1-3347dfde88bf.jpeg?im_w=1200" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">슈테판스돔 레지던스 아파트</div>
+          <div class="hotel-space-badge" style="background:#EAF3DE;color:#27500A;">✦ 완전 분리 — 침실 따로 + 거실·주방</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩2,470,000 (3박)</span></div>
+            <div class="hotel-spec"><span class="spec-label">면적</span><span class="spec-value">120 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">조식</span><span class="spec-value">없음 (주방 직접 이용 가능)</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">슈테판 광장 도보 1분 (링 최중심)</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>120㎡ 대형 아파트 — 거실·주방 완비, 독립 공간 보장</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>비엔나 최중심 위치로 모든 관광지 도보 가능</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>에어비앤비 옵션 중 가성비 최상</div>
+          </div>
+          <div class="hotel-note">※ 엘리베이터 유무 및 체크인 방식 에어비앤비 예약 전 사전 확인 권장</div>
+        </div>
+      </div>
+      <!-- 2안 -->
+      <div class="hotel-card reveal">
+        <div class="hotel-plan-bar" style="background:#8B6020;">
+          <span class="hotel-plan-label">2안 · 호텔</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+<img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/129061809.jpg?k=6e22a6950d6778aa09c23ff5ac0db3c4e1ae065d32b56e0696824669aff1f27d&o=&s=1024x" loading="lazy">
+<img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/129066911.jpg?k=b29595f6dfbaaf4cc7172dded9a9966ef4ef8fc1d332490d472e2f5e560c72f7&o=&s=1024x" loading="lazy">
+<img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/129066879.jpg?k=60e15414466013b58e99855576b5d3bb869ebe76f41873587df2dcb1f26a17f6&o=&s=1024x" loading="lazy">
+<img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/129066967.jpg?k=a9ccb8cabc310396cb5f55bb361488f324ef1ac534c76fbdbe999204c8e8a978&o=&s=1024x" loading="lazy">
+<img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/129062268.jpg?k=a82b6708f6ab3b5b91a7edbd5051fbda291d91de469d3d4ad267414f0e92bc27&o=&s=1024x" loading="lazy">
+<img src="https://www.living-hotels.com/fileadmin/user_upload/02_Standorte/09_Wien/an_der_Oper/04_Zimmer/Executive/living-hotel-an-der-oper-executeive-apartment-grundriss.jpg" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">리빙 호텔 안 데어 오퍼</div>
+          <div class="hotel-space-badge" style="background:#FFF3D6;color:#8B6020;">거실 분리 구조 (엑스트라베드 추가 가능)</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩1,960,000 (3박)</span></div>
+            <div class="hotel-spec"><span class="spec-label">면적</span><span class="spec-value">55 ㎡ (거실 분리 구조)</span></div>
+            <div class="hotel-spec"><span class="spec-label">조식</span><span class="spec-value">없음</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">빈 국립 오페라 하우스 바로 앞</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>오페라 공연장 도보 1분 — 발레 관람 후 바로 귀실</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>호텔 서비스 (매일 청소, 프런트 24시간)</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>3개 옵션 중 최저가</div>
+          </div>
+          <div class="hotel-note">※ 엑스트라베드 추가 요금·배치 가능 여부 호텔 사전 확인 필요</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT DIVIDER -->
+<div style="background:#f0ebe0;padding:0 24px;">
+  <div class="transport-divider">
+    <div class="transport-pill">🚂 비엔나 → 잘츠부르크 · 레일젯 직통 약 2시간 30분</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- ── SALZBURG ── -->
+<!-- ══════════════════════════════════ -->
+<section class="city-section alt" id="salzburg">
+  <div class="container">
+    <div class="city-header reveal">
+      <div class="city-header-left">
+        <div class="city-num" style="color:var(--salzburg);">02</div>
+        <div class="city-name-block">
+          <h2 class="city-name" style="color:var(--salzburg);">잘츠부르크</h2>
+          <div class="city-name-en">Salzburg, Austria</div>
+        </div>
+      </div>
+      <div class="city-info-bar">
+        <span class="info-pill">📅 5월 18일 ~ 19일</span>
+        <span class="info-pill" style="background:var(--salzburg);color:#fff;border-color:var(--salzburg);">1박</span>
+        <span class="info-pill">🚂 기차 이동</span>
+        <span class="info-pill">🚗 렌터카 픽업</span>
+      </div>
+    </div>
+
+    <div class="attractions-title reveal">주요 관광지</div>
+    <div class="attractions-grid">
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/fb/bb/35/mirabell-paleis-en-tuinen.jpg?w=900&h=-1&s=1" alt="미라벨 정원" loading="lazy">
+    <img src="https://panoramatours-website.s3.amazonaws.com/user_upload/Sehenswuerdigkeiten/Salzburg/Mirabellgarten_im_Sommer__c__Tourismus_Salzburg_GmbH_01.jpg" alt="미라벨 정원" loading="lazy">
+    <img src="https://test-resize-image.wishbeen.co.kr/692096634781572f935f9cfd6e26cf1e.jpg?h=500" alt="미라벨 정원" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--salzburg);">미라벨 궁전 & 정원</div>
+          <div class="attraction-sub" style="color:var(--gold);">사운드 오브 뮤직 촬영지</div>
+          <div class="attraction-desc">페가수스 분수 · 장미 정원 · 아름다운 화단. 영화 속 '도레미 송' 장면 배경.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://salzburg-toptours.com/images/Blog/2025/Getreidegasse/salzburg-toptours-getreidegasse-december-small.jpg" alt="게트라이데 거리" loading="lazy">
+    <img src="https://mozarteum.at/static/4c1c97d8133620e9729a621ad0930ce0/279ba/video-titlebild-geburtshaus.jpg" alt="게트라이데 거리" loading="lazy">
+    <img src="https://365austria.com/wp-content/uploads/2024/09/Mozart-Wohnhaus-Salzburg-c-Paul-Weindl-fuer-365Austria-2-580x408.jpeg" alt="게트라이데 거리" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--salzburg);">게트라이데 거리</div>
+          <div class="attraction-sub" style="color:var(--gold);">잘츠부르크 최고 쇼핑·관광 거리</div>
+          <div class="attraction-desc">전통 철제 간판이 늘어선 구시가 메인 거리 · 모차르트 생가 (9번지) 위치.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://freewalkingtoursalzburg.com/wp-content/uploads/2020/04/The-Hohensalzburg-Fotress.jpg" alt="호엔잘츠부르크 성" loading="lazy">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4uyrfGWHHaRYHmkybYWJiNTGs9CXIMp26TQ&s" alt="호엔잘츠부르크 성" loading="lazy">
+    <img src="https://mblogthumb-phinf.pstatic.net/MjAyNDAyMTdfMjk4/MDAxNzA4MTY5NjQ2MTQx.vryIaSbloThaFiqcYAolHi1AIaPNnhUB9cB-sSMAFv0g.6asJkha9mo7uXi1snnEoORBqfiIAgfAq56_bcyKTjYsg.JPEG.cdjy28/20231226_154504.jpg?type=w800" alt="호엔잘츠부르크 성" loading="lazy">
+
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--salzburg);">호엔잘츠부르크 성</div>
+          <div class="attraction-sub" style="color:var(--gold);">중세 산성 · 케이블카 탑승</div>
+          <div class="attraction-desc">케이블카(푸니쿨라)로 편하게 올라가 잘츠부르크 전경 파노라마 감상.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotels-title reveal">확정 숙소 — 1박 (5/18 ~ 5/19)</div>
+    <div class="hotels-grid" style="grid-template-columns:1fr;">
+      <div class="hotel-card recommended reveal" style="max-width:560px;">
+        <div class="hotel-plan-bar" style="background:var(--salzburg);">
+          <span class="hotel-plan-label">확정 숙소</span>
+          <span class="hotel-rec-badge">예약 필요</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+  <img src="https://media.leonardo-hotels.com/static.leonardo-hotels.com/image/leonardoboutiquehotelsalzburggablerbru_room_suite3_2023_4000x2600_8beacb7c3faf78b790dffa23aa94405a.jpg?width=1440" alt="Leonardo Boutique" loading="lazy">
+  <img src="https://media.leonardo-hotels.com/static.leonardo-hotels.com/image/leonardoboutiquehotelsalzburggablerbru_room_suite2_2023_4000x2600_9dd2f2593a0769ac60c0edcfe2be451a.jpg?width=1440" alt="Leonardo Boutique" loading="lazy">
+  <img src="https://media.leonardo-hotels.com/static.leonardo-hotels.com/image/leonardoboutiquehotelsalzburggablerbru_room_suite1_2023_4000x2600_8a0b13605a704c86ecd5a4a9facce0ab.jpg?width=1440" alt="Leonardo Boutique" loading="lazy">
+  <img src="https://media.leonardo-hotels.com/static.leonardo-hotels.com/image/leonardoboutiquehotelsalzburggablerbru_room_suite_bathroom1_2023_4000x2600_2cbe3d390d987397b45e5796e3f1e9b5.jpg?width=1440" alt="Leonardo Boutique" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">Leonardo Boutique Hotel Salzburg Gablerbräu</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩660,000 (1박, 조식 포함)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Suite · 40 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">린저 가세 / 미라벨 정원 도보 5분</span></div>
+            <div class="hotel-spec"><span class="spec-label">특전</span><span class="spec-value">🎫 잘츠부르크 주 전역 대중교통 무료 (Guest Mobility Ticket)</span></div>
+          </div>
+          <div class="hotel-note">※ 공홈 예약 · 렌터카는 잘츠부르크 시내에서 이 호텔 체크아웃 후 픽업</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT DIVIDER -->
+<div style="background:#f0ebe0;padding:0 24px;">
+  <div class="transport-divider">
+    <div class="transport-pill">🚗 렌터카로 잘츠카머구트 자유 이동</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- ── SALZKAMMERGUT ── -->
+<!-- ══════════════════════════════════ -->
+<section class="city-section" id="lake">
+  <div class="container">
+    <div class="city-header reveal">
+      <div class="city-header-left">
+        <div class="city-num" style="color:var(--lake);">03</div>
+        <div class="city-name-block">
+          <h2 class="city-name" style="color:var(--lake);">잘츠카머구트</h2>
+          <div class="city-name-en">Salzkammergut, Austria</div>
+        </div>
+      </div>
+      <div class="city-info-bar">
+        <span class="info-pill">📅 5월 19일 ~ 21일</span>
+        <span class="info-pill" style="background:var(--lake);color:#fff;border-color:var(--lake);">2박</span>
+        <span class="info-pill">🚗 렌터카 자유 이동</span>
+      </div>
+    </div>
+
+    <div class="attractions-title reveal">주요 관광지</div>
+    <div class="attractions-grid">
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://i.namu.wiki/i/G6Rvwl2yj6EkL_vFfQVi5UZnfihspu_OMDpCltOONMx4o-CaTv2naF90D54vNOI1t5ABU0eOu2nPn88JdG84hA.webp" alt="할슈타트" loading="lazy">
+    <img src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.kakaocdn.net/brunch/service/user/1UxX/image/2FChzgkB-Akblp3lVi6E39d5a78.jpg" alt="할슈타트" loading="lazy">
+    <img src="https://media.istockphoto.com/id/156756701/ko/%EC%82%AC%EC%A7%84/%ED%95%A0%EC%8A%88%ED%83%80%ED%8A%B8-%EC%95%BC%EA%B2%BD.jpg?s=612x612&w=0&k=20&c=sNAweiE7pK4wF5Yf7bmyFxiMgWF-0Hn86ERSda3Veec=" alt="할슈타트" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--lake);">할슈타트</div>
+          <div class="attraction-sub" style="color:var(--gold);">세계에서 가장 아름다운 호수 마을 · 유네스코</div>
+          <div class="attraction-desc">에메랄드빛 할슈태터 호수 · 1만 년 역사 소금 광산 마을. <strong>⚠ 오전 일찍 방문 권장</strong> — 오후는 관광객이 극도로 많아요.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://www.hallstattaustria.eu/wp-content/uploads/2023/06/Gosaus-lake-Gosausee-Gosauseen-1024x682.jpeg" alt="고사우 호수" loading="lazy">
+   <img src="https://img1.daumcdn.net/thumb/R1280x0.fwebp/?fname=http://t1.daumcdn.net/brunch/service/user/glAm/image/H4aHhOmeefxthD29MHB0ZlhOe4Y.JPG" alt="고사우 호수" loading="lazy">
+   <img src="https://www.derdachstein.at/_dachstein/2_dachstein-gletscherwelt/gletschererlebnis/panoramagondel/image-thumb__14231__header-image/gondel-dachstein_-c-_photoguides_bearbeitet@2x.webp" alt="고사우 호수" loading="lazy">
+   <img src="https://www.derdachstein.at/_dachstein/2_dachstein-gletscherwelt/gletschererlebnis/treppe-ins-nichts/image-thumb__1310__gallery/treppeinsnichts_fischauge.webp" alt="고사우 호수" loading="lazy">
+   <img src="https://www.derdachstein.at/_dachstein/2_dachstein-gletscherwelt/gletschererlebnis/hangebrucke/image-thumb__1302__header-image/hangebrucke_winter@2x.webp" alt="고사우 호수" loading="lazy">
+   <img src="https://tellerrandstories.de/wp-content/uploads/2024/08/fa_32282-sound-of-music-2xdtf25-eyeturner-georg-berg.jpg" alt="고사우 호수" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--lake);">고사우 호수 & 다흐슈타인</div>
+          <div class="attraction-sub" style="color:var(--gold);">빙하 설산이 반영되는 비취빛 호수</div>
+          <div class="attraction-desc">다흐슈타인 빙하 케이블카 · 장크트길겐 (모차르트 어머니의 고향) · 사운드 오브 뮤직 트레일.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://www.inghams.co.uk/media/optim/webp/unmj0ptw/zellamsee_austria_-w1200.webp" alt="첼암제" loading="lazy">
+    <img src="https://www.rauriserhof.at/img/containers/main/img/zell-am-see.jpg/e2f5797958498ea40aa887bb0194bfb1.jpg" alt="첼암제" loading="lazy">
+   <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/dd/7d/ca/top-of-salzburg-auf-3029.jpg?w=1200&h=1200&s=1" alt="첼암제" loading="lazy">
+    <img src="https://www.kitzsteinhorn.at/bilder/kitzsteinhorn/bahnen-und-technik/473/image-thumb__473__topImage/gipfelbahn.992659ea.jpg" alt="첼암제" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--lake);">첼암제 & 키츠슈타인호른</div>
+          <div class="attraction-sub" style="color:var(--gold);">알프스 호수 도시 & 빙하 케이블카</div>
+          <div class="attraction-desc">첼암제 호수 전망 · 키츠슈타인호른 여름 설경 · 샤프베르크 산악열차 (사운드 오브 뮤직 촬영지).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotels -->
+    <div class="hotels-title reveal">숙소 — 2박 구성 (5/19 ~ 5/21)</div>
+    <p class="reveal" style="font-size:13px;color:var(--text-muted);margin-bottom:24px;">첫째 날은 1안·2안 중 선택, 둘째 날은 타우에른 스파로 공통 확정입니다.</p>
+
+    <p class="reveal" style="font-size:12px;font-weight:500;color:var(--lake);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">첫째 날 (5/19) — 선택</p>
+    <div class="hotels-grid">
+      <div class="hotel-card recommended reveal">
+        <div class="hotel-plan-bar" style="background:var(--lake);">
+          <span class="hotel-plan-label">1안 · 할슈타트 호수뷰</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+ <img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouRdg/cid.y1896a6322f3153b3/gid.63/Junior_Suite10.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+ <img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouRgA/cid.y894719a19ba0c912/gid.63/Junior_Suite11.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+ <img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouRnw/cid.y59dc444831a551e7/gid.63/Junior_Suite13.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+ <img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouRqA/cid.y4d0d289e578a2605/gid.63/Junior_Suite14.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+ <img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouSLg/cid.y151d18556fa59872/gid.63/Junior_Suite3.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+<img src="https://www.hotel-hallstatt.com/redx/tools/mb_image.php/ct.ZouR1w/cid.yaac46c30e3f206f5/gid.63/Junior_Suite18.jpg" alt="Heritage Hotel Hallstatt" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">Heritage Hotel Hallstatt</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩896,000 (1박, 조식 포함)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Heritage Junior Suite · 45 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">할슈타트 호수 바로 앞 · 수상 전망</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>세계에서 가장 아름다운 호텔 위치 중 하나</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>창문에서 할슈타트 호수 직접 조망</div>
+          </div>
+        </div>
+      </div>
+      <div class="hotel-card reveal">
+        <div class="hotel-plan-bar" style="background:#2D85B5;">
+          <span class="hotel-plan-label">2안 · 고사우 산악 리조트</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+   <img src="https://www.cbooking.de/media/dachstein-cooee-alpin/rooms/9ffcfb6b-2329-4d52-9f19-06cc4f162a11.avif" alt="COOEE alpin Hotel Dachstein" loading="lazy">
+    <img src="https://www.cbooking.de/media/dachstein-cooee-alpin/rooms/29909aba-189e-4d86-a48b-d7e8f129b816.avif" alt="COOEE alpin Hotel Dachstein" loading="lazy">
+   <img src="https://www.cbooking.de/media/dachstein-cooee-alpin/rooms/e957d827-d551-43fe-af28-eec63752eeb6.avif" alt="COOEE alpin Hotel Dachstein" loading="lazy">
+   <img src="https://www.cbooking.de/media/dachstein-cooee-alpin/rooms/b5fd2a51-9580-4652-bcf8-108789c0cfc7.avif" alt="COOEE alpin Hotel Dachstein" loading="lazy">
+   <img src="https://www.cbooking.de/media/dachstein-cooee-alpin/rooms/9ffcfb6b-2329-4d52-9f19-06cc4f162a11.avif" alt="COOEE alpin Hotel Dachstein" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">COOEE alpin Hotel Dachstein</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩633,000 (1박, 하프보드)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Family Connect Room · 42 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">포함</span><span class="spec-value">하프보드 (조식 + 석식 모두 포함)</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">고사우 / 다흐슈타인 빙하 전망</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>Connect Room = 2개 방 연결 — 공간 분리 가능</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>석식까지 포함되어 실질 가성비 우수</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAUERN SPA confirmed -->
+    <p class="reveal" style="font-size:12px;font-weight:500;color:#0E7490;letter-spacing:0.1em;text-transform:uppercase;margin:32px 0 16px;">둘째 날 (5/20) — 공통 확정</p>
+    <div class="confirmed-hotel reveal">
+      <div>
+        <div class="confirmed-badge">두 일정 공통 확정</div>
+        <div class="confirmed-name">TAUERN SPA<br>Zell am See - Kaprun Hotel</div>
+        <div class="confirmed-spec"><span class="confirmed-spec-label">가격</span>₩1,158,000 (1박)</div>
+        <div class="confirmed-spec"><span class="confirmed-spec-label">객실</span>Double Room Panorama × <strong>2룸</strong></div>
+        <div class="confirmed-spec"><span class="confirmed-spec-label">포함</span>하프보드 (조식+석식) + 온천·수영장·사우나</div>
+        <div class="confirmed-spec"><span class="confirmed-spec-label">특징</span>♨ 대형 온천 스파 · 알프스 파노라마 뷰 · 각 방 독립</div>
+        <div style="margin-top:16px;padding:10px 14px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);">
+          2룸 각자 독립 사용으로 개인 공간 완전 보장
+        </div>
+      </div>
+      <div class="confirmed-photo-ph carousel"><div class="carousel-inner">
+ <img src="https://cdn.dirs21.de/v1/cdn/images/98402/tsk-doppelzimmer-panorama-01-2900px.jpg?w=3840" alt="TAUERN SPA" loading="lazy">
+<img src="https://cdn.dirs21.de/v1/cdn/images/98402/tsk-doppelzimmer-panorama-bad-01-2900px.jpg?w=3840" alt="TAUERN SPA" loading="lazy">
+<img src="https://cdn.dirs21.de/v1/cdn/images/98402/skizze-doppelzimmer-panorama-bearb.jpg.png?w=3840" alt="TAUERN SPA" loading="lazy">
+<img src="https://www.tauernspakaprun.com/bilder/shooting-family-SO-2024/10030/image-thumb__10030__teaserTwoElements2/TSK-Mama-Tochter-Glas-Panoramapool-HOCH~-~media--72cf3f9c--query@2x.3111b233.webp" alt="TAUERN SPA" loading="lazy">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2F6yYoZ%2FbtspFjaYXcc%2FAAAAAAAAAAAAAAAAAAAAABWmG0jYf69mC56hOKrBeQspM4oYhio5isS37j8GBbNW%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1777561199%26allow_ip%3D%26allow_referer%3D%26signature%3D%252BHTiih4W1Uz74PSWCe0Ks3NOr9g%253D" alt="TAUERN SPA" loading="lazy">
+</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT DIVIDER -->
+<div style="background:var(--cream);padding:0 24px;">
+  <div class="transport-divider">
+    <div class="transport-pill">🚗 첼암제 → 체스키크룸로프 · 렌터카 약 2시간 30분 (오스트리아→체코 국경 통과)</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- ── ČESKÝ KRUMLOV ── -->
+<!-- ══════════════════════════════════ -->
+<section class="city-section alt" id="czech">
+  <div class="container">
+    <div class="city-header reveal">
+      <div class="city-header-left">
+        <div class="city-num" style="color:var(--czech);">04</div>
+        <div class="city-name-block">
+          <h2 class="city-name" style="color:var(--czech);">체스키크룸로프</h2>
+          <div class="city-name-en">Český Krumlov, Czech Republic</div>
+        </div>
+      </div>
+      <div class="city-info-bar">
+        <span class="info-pill">📅 5월 21일 ~ 22일</span>
+        <span class="info-pill" style="background:var(--czech);color:#fff;border-color:var(--czech);">1박</span>
+        <span class="info-pill">🚗 렌터카 이동</span>
+      </div>
+    </div>
+
+    <div class="attractions-title reveal">주요 관광지 · 유네스코 세계문화유산</div>
+    <div class="attractions-grid">
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://cityhry.cz/api/files/lBkvdUH4NVDeAnaIHuv0RZDSZ0n7N7IcR4LBJDW2.jpg" alt="체스키크룸로프 성" loading="lazy">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/%C4%8Cesk%C3%BD_Krumlov%2C_z%C3%A1mek_cel%C3%BD_z_vyhl%C3%ADdky.jpg" alt="체스키크룸로프 성" loading="lazy">
+    <img src="https://www.ckrumlov.info/img/katalog/68/0b.jpg" alt="체스키크룸로프 성" loading="lazy">
+    <img src="https://www.amazingczechia.com/wp-content/uploads/2017/11/cesky-krumlov-03a.jpg" alt="체스키크룸로프 성" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--czech);">체스키크룸로프 성</div>
+          <div class="attraction-sub" style="color:var(--gold);">중세 고딕·르네상스 양식</div>
+          <div class="attraction-desc">해자와 곰 사육장 · 성 내부 투어 · 탑에서 내려다보는 구시가지 전경.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://blog.kakaocdn.net/dna/bzbHqx/btsNKiMtPlJ/AAAAAAAAAAAAAAAAAAAAAP38LvFsaueCGmxrNwQKJfdGprMetquYacTmkjKOpgKQ/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1777561199&allow_ip=&allow_referer=&signature=z9jrspKkqKiSYisJ37Qm13paqL4%3D" alt="체스키크룸로프 구시가" loading="lazy">
+    <img src="https://previews.123rf.com/images/mistervlad/mistervlad2203/mistervlad220301218/183373688-cesky-krumlov-czech-republic-may-2019-streets-of-cesky-krumlov-old-town.jpg" alt="체스키크룸로프 구시가" loading="lazy">
+    <img src="https://www.turista.co.kr/files/product/530/schedule/1041/596be913a782a56d2c5fb248ad06a8cb.png" alt="체스키크룸로프 구시가" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--czech);">구시가지 & 블타바강 전망</div>
+          <div class="attraction-sub" style="color:var(--gold);">오후 늦게, 저녁 방문 강력 추천</div>
+          <div class="attraction-desc">블타바강이 감싸는 반도 위 중세 마을. 오후 5시 이후 당일치기 관광객이 빠지면 전혀 다른 분위기로 변해요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotels-title reveal">숙소 비교 — 1박 (5/21 ~ 5/22)</div>
+    <div class="hotels-grid">
+      <div class="hotel-card recommended reveal">
+        <div class="hotel-plan-bar" style="background:var(--czech);">
+          <span class="hotel-plan-label">1안</span>
+          <span class="hotel-rec-badge">추천</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://files.previo.app/retinathumbnail/758819/1600/0/20240304163840_7565zY_full.jpg" alt="Orangerie Garden by KH" loading="lazy">
+<img src="https://files.previo.app/retinathumbnail/758819/1600/0/20230313141709_RVLPFg_full.jpg" alt="Orangerie Garden by KH" loading="lazy">
+<img src="https://files.previo.app/retinathumbnail/758819/1600/0/20240304163840_nu9FrR_full.jpg" alt="Orangerie Garden by KH" loading="lazy">
+<img src="https://files.previo.app/retinathumbnail/758819/1600/0/20240304163840_sw3Sbo_full.jpg" alt="Orangerie Garden by KH" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">Orangerie Garden by KH</div>
+          <div class="hotel-space-badge" style="background:#E8F5EE;color:#2D5A3D;">97㎡ 넓은 공간 · 성 전망 정원</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩419,000 (1박)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Deluxe Quadruple Room · 97 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">구시가지 중심 · 성 전망 정원 보유</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>97㎡로 가장 넓어 여유로운 공간 확보</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>정원에서 체스키크룸로프 성 전망</div>
+          </div>
+          <div class="hotel-note">※ 구시가지 내 차량 진입 불가 — 성문 밖 주차장 이용 후 도보 이동</div>
+        </div>
+      </div>
+      <div class="hotel-card reveal">
+        <div class="hotel-plan-bar" style="background:#68A882;">
+          <span class="hotel-plan-label">2안</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+   <img src="https://latranhotel.cz/media/rooms/family/1.jpg?w=1440&s=a804b3d7369e453506fd50538361ded7&tmp-sync-img=v1" alt="Hotel Latrá" loading="lazy">
+   <img src="https://latranhotel.cz/media/rooms/family/7.jpg?w=1440&s=d3b4d62f8c59a1b7bd2ab0d1a0a2b104&tmp-sync-img=v1" alt="Hotel Latrá" loading="lazy">
+   <img src="https://latranhotel.cz/media/rooms/family/12.jpg?w=1440&s=9985a9fa13c99fe6b91f5830397ccbaf&tmp-sync-img=v1" alt="Hotel Latrá" loading="lazy">
+   <img src="https://latranhotel.cz/media/rooms/family/1.jpg?w=1440&s=a804b3d7369e453506fd50538361ded7&tmp-sync-img=v1" alt="Hotel Latrá" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">Hotel Latrán</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩386,000 (1박)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Family Room · 45 ㎡</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">성 바로 아래 라트란 거리</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>체스키크룸로프 성 도보 3분</div>
+  <div class="hotel-pro"><div class="hotel-pro-dot"></div>조식 포함</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>전통 인테리어 · 합리적 가격</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORT DIVIDER -->
+<div style="background:var(--cream);padding:0 24px;">
+  <div class="transport-divider">
+    <div class="transport-pill">🚗 체스키크룸로프 → 프라하 · 렌터카 약 2시간 30분 → 프라하 시내 렌터카 반납</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- ── PRAGUE ── -->
+<!-- ══════════════════════════════════ -->
+<section class="city-section" id="prague">
+  <div class="container">
+    <div class="city-header reveal">
+      <div class="city-header-left">
+        <div class="city-num" style="color:var(--prague);">05</div>
+        <div class="city-name-block">
+          <h2 class="city-name" style="color:var(--prague);">프라하</h2>
+          <div class="city-name-en">Praha, Czech Republic</div>
+        </div>
+      </div>
+      <div class="city-info-bar">
+        <span class="info-pill">📅 5월 22일 ~ 25일</span>
+        <span class="info-pill" style="background:var(--prague);color:#fff;border-color:var(--prague);">3박</span>
+        <span class="info-pill">✈ 5/25 19:05 귀국</span>
+      </div>
+    </div>
+
+    <div class="attractions-title reveal">주요 관광지</div>
+    <div class="attractions-grid">
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://storage.doopedia.co.kr/upload/_upload/image4/slide/201709/09/20170909183214298ca4c29974b98924a26542f907464a8bdzv5V/20170909183214298ca4c29974b98924a26542f907464a8bdzv5V_thumb_1200.JPG" alt="프라하 구시가 광장" loading="lazy">
+    <img src="https://d3b39vpyptsv01.cloudfront.net/photo/1/2/d45f0f2b79ed2a03b62a5f7ff17a1656_l.jpg" alt="프라하 구시가 광장" loading="lazy">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Prague_Old_Town_Square%2C_Czech_Republic_-_Oct_2010.jpg" alt="프라하 구시가 광장" loading="lazy">
+   <img src="https://www.obonparis.com/uploads/PRAGUE%20CLOCK%20TOWER/PRAGUE-111.jpg" alt="프라하 구시가 광장" loading="lazy">
+   <img src="https://d1blyo8czty997.cloudfront.net/tour-photos/1616/800x800/2093462594.png" alt="프라하 구시가 광장" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--prague);">구시가 광장 & 천문시계</div>
+          <div class="attraction-sub" style="color:var(--gold);">1410년 제작 · 매 정각 인형 퍼레이드</div>
+          <div class="attraction-desc">화려한 고딕·바로크 건축이 둘러싼 광장 · 매 정각 천문시계 인형 퍼레이드.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://tourimage.interpark.com//Spot/299/20176/201907/6369965581954375940.jpg" alt="카를 교" loading="lazy">
+    <img src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/9f05b530-883c-4681-8402-f06f5115c240.jpeg" alt="카를 교" loading="lazy">
+    <img src="https://img.freepik.com/premium-photo/statue-charles-bridge-prague_552127-1193.jpg" alt="카를 교" loading="lazy">
+    <img src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/572a53a0-8ab8-4eb4-98f7-f0bbee5e596f.jpeg" alt="카를 교" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--prague);">카를 교</div>
+          <div class="attraction-sub" style="color:var(--gold);">중세 석조 다리 · 30개 성인상</div>
+          <div class="attraction-desc">새벽 일찍 방문하면 한적하게 거닐 수 있어요 — 일출과 프라하 성 전망이 특히 아름다워요.</div>
+        </div>
+      </div>
+      <div class="attraction-card reveal">
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/ad03211b-d2be-49f2-9fb4-39a4863c08ac.jpeg" alt="프라하 성" loading="lazy">
+ <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/0d/f7/9c/para-admirar-la-fachada.jpg?w=1200&h=-1&s=1" alt="프라하 성" loading="lazy">
+ <img src="https://tourimage.interpark.com//Spot/299/20176/202112/6377507683370780930.jpg" alt="프라하 성" loading="lazy">
+ <img src="https://d3b39vpyptsv01.cloudfront.net/photo/1/2/5aac2aaf97442bd23d924295611996f9_l.jpg" alt="프라하 성" loading="lazy">
+ <img src="https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/27c21562-c8e2-41a9-a37c-7916b29f40e6.jpeg" alt="프라하 성" loading="lazy">
+ <img src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=https://t1.daumcdn.net/brunch/service/user/1JNi/image/neYntFESUTdq-8FIpnxfCY9Lt6Q.jpg" alt="프라하 성" loading="lazy">
+ <img src="https://contents.verygoodtour.com/content/210/CZ/0000/PRG/image/1977555_1.jpg" alt="프라하 성" loading="lazy">
+  </div></div>
+        <div class="attraction-body">
+          <div class="attraction-name" style="color:var(--prague);">프라하 성 & 야경</div>
+          <div class="attraction-sub" style="color:var(--gold);">유럽 최대 성 단지</div>
+          <div class="attraction-desc">성 비투스 대성당 · 황금 소로 · 야경은 유럽 최고 수준. 성 위에서 내려다보는 도시 전경이 압도적이에요.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hotels-title reveal">숙소 비교 — 3박 (5/22 ~ 5/25)</div>
+    <div class="hotels-grid">
+      <!-- 1안 Hotel Liberty -->
+      <div class="hotel-card recommended reveal">
+        <div class="hotel-plan-bar" style="background:var(--prague);">
+          <span class="hotel-plan-label">1안 · 2층 스위트 호텔</span>
+          <span class="hotel-rec-badge">추천</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+    <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/515024060.jpg?k=282e8dd364d08329434d62dd398dda95b618e69d849ed0d408f37c809d81446a&o=&s=1024x" alt="Hotel Liberty" loading="lazy">
+<img src="https://pix8.agoda.net/property/67901/0/de6797722471b8e1c88d1cbf0ebf31a4.jpeg?s=1024x" alt="Hotel Liberty" loading="lazy">
+<img src="https://pix8.agoda.net/hotelImages/67901/-1/ac526f1adf8e17ac612bb155b38503ca.jpg?ce=0&s=1024x" alt="Hotel Liberty" loading="lazy">
+<img src="https://pix8.agoda.net/property/67901/0/de6797722471b8e1c88d1cbf0ebf31a4.jpeg?s=1024x" alt="Hotel Liberty" loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">Hotel Liberty</div>
+          <div class="hotel-space-badge" style="background:#EDE0F5;color:#5B3987;">✦ 위아래 층 완전 분리 — Two-story Suite</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩2,218,000 (3박, 조식 포함)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Suite · 80 ㎡ · 최상층 · 2층 구조</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">구시가지 도보권 중심</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div><strong>2층(Two-story) 구조</strong> — 위아래 층으로 완전 독립 공간</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>80㎡ 최상층 · 고급 마감재 · 럭셔리한 여행 마무리</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>조식 포함 · 호텔 풀서비스</div>
+          </div>
+          <div class="hotel-note">※ 예약 코드: AGRJKPW8</div>
+        </div>
+      </div>
+      <!-- 2안 TurnKey -->
+      <div class="hotel-card reveal">
+        <div class="hotel-plan-bar" style="background:#7B4FB0;">
+          <span class="hotel-plan-label">2안 · 듀플렉스 + 테라스</span>
+        </div>
+        <div class="carousel"><div class="carousel-inner">
+  <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/784404667.jpg?k=40dc1d58d799ec637519cdb8e67d984227913448394958c9fc1adffc1e2c542c&o=&s=1024x" alt="TurnKey | Republic Sq." loading="lazy">
+ <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/508371400.jpg?k=6cf22bd07edc67a0658a3779a442eecbc6aeee249d2ace57cef755a60e7dc84e&o=&s=1024x" alt="TurnKey | Republic Sq." loading="lazy">
+ <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/508374726.jpg?k=5c504bd1e28b236ab7180697f0745d2f329374c360aeb549fe7c3b4f9f2a3f6f&o=&s=1024x" alt="TurnKey | Republic Sq." loading="lazy">
+ <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/508374714.jpg?k=d1822a462cfe4fea89abcb3a422f10df8a16e3dcf21fd71f43dc17e27f0919ee&o=&s=1024x" alt="TurnKey | Republic Sq." loading="lazy">
+  </div></div>
+        <div class="hotel-body">
+          <div class="hotel-name">TurnKey | Republic Sq.</div>
+          <div class="hotel-space-badge" style="background:#F0E8FF;color:#7B4FB0;">✦ 130㎡ 듀플렉스 + 시내 테라스</div>
+          <div class="hotel-specs">
+            <div class="hotel-spec"><span class="spec-label">가격</span><span class="spec-value">₩2,730,000 (3박, 조식 없음)</span></div>
+            <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Duplex I · 130 ㎡ + 테라스</span></div>
+            <div class="hotel-spec"><span class="spec-label">위치</span><span class="spec-value">공화국 광장 인근 · 구시가 도보권</span></div>
+          </div>
+          <div class="hotel-pros">
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>130㎡ + 테라스 — 가장 넓음</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>테라스에서 프라하 시내 조망</div>
+            <div class="hotel-pro"><div class="hotel-pro-dot"></div>듀플렉스 2층 구조로 완전 분리</div>
+          </div>
+          <div class="hotel-note">※ 조식 없음 → 실질 비용 ₩3,100,000 이상 / 에어비앤비 특성상 호텔 서비스 없음</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIPS ── -->
+<section class="tips-section" id="tips">
+  <div class="container">
+    <span class="section-eyebrow">Travel Tips</span>
+    <h2 class="section-title">여행 준비 & 팁</h2>
+    <div class="tips-grid reveal">
+      <div class="tip-card">
+        <div class="tip-emoji">✈️</div>
+        <div class="tip-title">항공편</div>
+        <div class="tip-text">대한항공 KE937 · 인천 10:40 출발 → 비엔나 16:20 도착 (직항 약 12시간 40분). 귀국편 KE970 · 프라하 19:05 출발 → 인천 5/26 13:20 도착.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">🚗</div>
+        <div class="tip-title">렌터카 안내</div>
+        <div class="tip-text">잘츠부르크에서 픽업, 프라하에서 반납. 오스트리아→체코 국경 통과 가능 여부 예약 시 반드시 명시. Europcar, Avis, Enterprise 권장. 오스트리아 고속도로 비네트(Vignette) 별도 구매 필요.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">🎫</div>
+        <div class="tip-title">잘츠카머구트 무료 교통</div>
+        <div class="tip-text">2025년 5월부터 잘츠부르크 주 내 모든 숙박 투숙객에게 Guest Mobility Ticket 발급. 대중교통 전면 무료. 체크인 시 디지털/PDF로 수령.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">⚠️</div>
+        <div class="tip-title">할슈타트 주의사항</div>
+        <div class="tip-text">5월은 성수기라 오후에 관광객이 극도로 몰려요. 오전 8시 이전 도착을 목표로 하고, 오후에는 고사우나 다른 호수로 이동하는 걸 추천해요.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">🍽️</div>
+        <div class="tip-title">식사 추천</div>
+        <div class="tip-text">비엔나: 비너슈니첼 + 카페 자허(자허토르테) / 잘츠부르크: 잘츠부르거 녹케를 / 체스키크룸로프: 블타바강 뷰 레스토랑 저녁 / 프라하: 굴라쉬 수프 + 체코 맥주.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-emoji">💡</div>
+        <div class="tip-title">여행 페이스</div>
+        <div class="tip-text">매일 오전에만 주요 관광, 오후는 카페·산책·휴식 패턴 추천. 유럽 주요 도시는 택시 앱(Uber, Bolt)이 잘 돼 있어 많이 걸을 필요가 없어요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom:8px;">
+    <span class="gold">동유럽 가족 여행</span> &nbsp;·&nbsp; 2026년 5월 15일 ~ 25일 &nbsp;·&nbsp; 오스트리아 · 체코
+  </div>
+  <div>비엔나 → 잘츠부르크 → 잘츠카머구트 → 체스키크룸로프 → 프라하</div>
+</footer>
+
+<script>
+
+  // ── Carousel
+  function initCarousels() {
+    document.querySelectorAll('.carousel').forEach(c => {
+      const inner = c.querySelector('.carousel-inner');
+      if (!inner) return;
+      const items = Array.from(inner.children);
+      const n = items.length;
+      if (n < 1) return;
+      let cur = 0;
+
+      if (n > 1) {
+        const prev = document.createElement('button');
+        prev.className = 'cbtn cprev'; prev.innerHTML = '&#10094;';
+        const next = document.createElement('button');
+        next.className = 'cbtn cnext'; next.innerHTML = '&#10095;';
+        const cnt = document.createElement('div');
+        cnt.className = 'ccnt'; cnt.textContent = `1 / ${n}`;
+        const dots = document.createElement('div'); dots.className = 'cdots';
+        items.forEach((_, i) => {
+          const d = document.createElement('span');
+          d.className = 'cdot' + (i === 0 ? ' on' : '');
+          d.addEventListener('click', () => go(i));
+          dots.appendChild(d);
+        });
+        c.append(prev, next, cnt, dots);
+        prev.addEventListener('click', e => { e.stopPropagation(); go(cur - 1); });
+        next.addEventListener('click', e => { e.stopPropagation(); go(cur + 1); });
+      }
+
+      function go(i) {
+        cur = ((i % n) + n) % n;
+        inner.style.transform = `translateX(-${cur * 100}%)`;
+        const cnt = c.querySelector('.ccnt');
+        if (cnt) cnt.textContent = `${cur + 1} / ${n}`;
+        c.querySelectorAll('.cdot').forEach((d, j) => d.classList.toggle('on', j === cur));
+      }
+
+      // Touch swipe
+      let tx = 0;
+      inner.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+      inner.addEventListener('touchend', e => {
+        const dx = tx - e.changedTouches[0].clientX;
+        if (Math.abs(dx) > 40) go(cur + (dx > 0 ? 1 : -1));
+      });
+    });
+  }
+  initCarousels();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'rgba(201,151,58,0.9)' : '';
+      a.style.background = a.getAttribute('href') === '#' + current
+        ? 'rgba(201,151,58,0.1)' : '';
+    });
+  });
+</script>
+</body>
+</html>
