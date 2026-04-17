@@ -16,6 +16,15 @@
   --lake:#1A5F8A; --lake-light:#d6eaf8;
   --czech:#2D5A3D; --czech-light:#e8f5ee;
   --prague:#5B3987; --prague-light:#ede0f5;
+  /* UI system variables */
+  --color-text-primary:#2c2c2c;
+  --color-text-secondary:#6b6560;
+  --color-text-tertiary:#9a9490;
+  --color-background-secondary:#f0ebe0;
+  --color-border-tertiary:#ddd8ce;
+  --border-radius-md:8px;
+  --border-radius-lg:12px;
+  --font-sans:'Noto Sans KR',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -36,7 +45,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--t
 .scroll-hint::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);}
 
 /* ── DASHBOARD SHELL ── */
-.dashboard{display:flex;flex-direction:column;min-height:100vh;}
+.dashboard{display:flex;flex-direction:column;}
 
 /* ── MAIN TAB BAR ── */
 .main-tabs{position:sticky;top:0;z-index:200;background:rgba(26,34,53,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,151,58,.2);display:flex;align-items:center;justify-content:center;gap:2px;padding:0 16px;}
@@ -47,7 +56,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--cream);color:var(--t
 
 /* ── TAB PANELS ── */
 .tab-panel{display:none;}
-.tab-panel.active{display:block;}
+.tab-panel.active{display:block;min-height:60vh;}
 
 /* ── CITY NAV SIDEBAR (itinerary tab) ── */
 .itinerary-layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 50px);}
@@ -181,11 +190,11 @@ footer .gold{color:var(--gold);}
 
 /* ── 편의시설 배지 ── */
 .amenity-row{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px;}
-.amenity-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);}
+.amenity-tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;background:#f0ebe0;color:#6b6560;border:0.5px solid #ddd8ce;}
 .amenity-tag.highlight{background:#E8F4FD;color:#1565C0;border-color:#BBDEFB;}
 .amenity-tag.gold{background:#FFF8E1;color:#F57F17;border-color:#FFE082;}
 .amenity-tag.green{background:#E8F5E9;color:#2E7D32;border-color:#C8E6C9;}
-.amenity-tag.none{background:var(--color-background-secondary);color:var(--color-text-tertiary,#aaa);text-decoration:line-through;}
+.amenity-tag.none{background:#f0ebe0;color:#9a9490;text-decoration:line-through;}
 @media(prefers-color-scheme:dark){
   .amenity-tag.highlight{background:#0D47A1;color:#90CAF9;border-color:#1565C0;}
   .amenity-tag.gold{background:#4A3200;color:#FFD54F;border-color:#F57F17;}
@@ -194,19 +203,43 @@ footer .gold{color:var(--gold);}
 
 /* ── 숙소 요약 표 ── */
 .accom-summary-wrap{margin-bottom:36px;}
-.accom-summary-title{font-size:16px;font-weight:600;color:var(--color-text-primary);margin:0 0 14px 0;}
-.accom-summary-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);}
+.accom-summary-title{font-size:16px;font-weight:600;color:#2c2c2c;margin:0 0 14px 0;}
+.accom-summary-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;border:0.5px solid #ddd8ce;}
 .accom-summary-table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px;}
-.accom-summary-table thead tr{background:var(--color-background-secondary);}
-.accom-summary-table th{padding:10px 12px;text-align:left;font-weight:600;font-size:11px;color:var(--color-text-secondary);white-space:nowrap;border-bottom:1px solid var(--color-border-tertiary);}
-.accom-summary-table td{padding:10px 12px;color:var(--color-text-primary);vertical-align:middle;border-bottom:0.5px solid var(--color-border-tertiary);}
+.accom-summary-table thead tr{background:#f0ebe0;}
+.accom-summary-table th{padding:10px 12px;text-align:left;font-weight:600;font-size:11px;color:#6b6560;white-space:nowrap;border-bottom:1px solid #ddd8ce;}
+.accom-summary-table td{padding:10px 12px;color:#2c2c2c;vertical-align:middle;border-bottom:0.5px solid #ddd8ce;}
 .accom-summary-table tr:last-child td{border-bottom:none;}
-.accom-summary-table tr.alt{background:var(--color-background-secondary);}
+.accom-summary-table tr.alt{background:#f0ebe0;}
 .accom-summary-table td.hotel-col{font-weight:500;min-width:160px;}
 .accom-summary-table td.center{text-align:center;white-space:nowrap;}
 .accom-summary-table td.ok{color:#27AE60;font-weight:600;text-align:center;}
-.accom-summary-table td.na{color:var(--color-text-secondary);opacity:.5;text-align:center;}
-.room-note{font-size:10px;color:var(--color-text-secondary);font-weight:400;}
+.accom-summary-table td.na{color:#6b6560;opacity:.5;text-align:center;}
+.room-note{font-size:10px;color:#6b6560;font-weight:400;}
+
+.center.sauna-o,.center.fit-o,.center.rooftop-o{font-weight:700;color:#27AE60;text-align:center;}
+.center.sauna-x,.center.fit-x{font-weight:700;color:#E74C3C;text-align:center;}
+
+/* ── 도시 서브탭 ── */
+.city-tabs-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;border-bottom:1.5px solid #ddd8ce;padding-bottom:0;}
+.city-tab{background:none;border:none;border-bottom:3px solid transparent;padding:10px 16px 12px;font-size:13px;font-weight:500;color:#6b6560;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all .2s;white-space:nowrap;}
+.city-tab:hover{color:var(--ctab-color,#555);}
+.city-tab.active{color:var(--ctab-color,#333);border-bottom-color:var(--ctab-color,#333);font-weight:600;}
+.city-tab-nights{font-size:10px;font-weight:400;opacity:.7;}
+.city-panel{display:none;}
+.city-panel.active{display:block;}
+/* ── 날짜별 일정 ── */
+.day-schedule-wrap{margin-top:36px;padding-top:28px;border-top:1.5px solid #ddd8ce;}
+.day-schedule-title{font-size:16px;font-weight:600;margin:0 0 20px 0;}
+.day-block{margin-bottom:24px;}
+.day-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.day-badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 14px;border-radius:20px;background:#f0ebe0;color:#2c2c2c;border:1px solid #ddd8ce;}
+.timeline{display:flex;flex-direction:column;gap:6px;padding-left:12px;border-left:2px solid #ddd8ce;}
+.tl-slot{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:flex-start;}
+.tl-time{font-size:11px;font-weight:600;color:#6b6560;padding-top:8px;text-align:right;}
+.tl-content{font-size:13px;padding:8px 12px;border-radius:8px;background:#f0ebe0;color:#2c2c2c;min-height:36px;line-height:1.5;}
+.tl-content.empty{color:#6b6560;font-style:italic;opacity:.5;}
+@media(max-width:500px){.city-tab{padding:8px 10px 10px;font-size:12px;}.tl-slot{grid-template-columns:36px 1fr;}}
 </style>
 </head>
 <body>
@@ -243,105 +276,31 @@ footer .gold{color:var(--gold);}
   </div>
 
   <!-- ══════════════════ TAB: 여행 일정 ══════════════════ -->
-  <div class="tab-panel active" id="tab-itinerary">
-
-    <!-- Overview strip -->
-    <div class="overview-section">
-      <div class="overview-grid">
-        <a href="#city-vienna" class="overview-card" onclick="scrollToCity('city-vienna')">
-          <div class="ov-num">01</div>
-          <div class="ov-city">비엔나</div>
-          <div class="ov-en">Wien, Austria</div>
-          <div class="ov-dates">5/15 (금) ~ 5/18 (월)</div>
-          <div class="ov-nights">3박</div>
-          <div class="ov-transport">✈ 인천 직항 도착 KE937</div>
-        </a>
-        <a href="#city-salzburg" class="overview-card" onclick="scrollToCity('city-salzburg')">
-          <div class="ov-num">02</div>
-          <div class="ov-city">잘츠부르크</div>
-          <div class="ov-en">Salzburg, Austria</div>
-          <div class="ov-dates">5/18 (월) ~ 5/19 (화)</div>
-          <div class="ov-nights">1박</div>
-          <div class="ov-transport">🚂 레일젯 2시간 30분</div>
-        </a>
-        <a href="#city-lake" class="overview-card" onclick="scrollToCity('city-lake')">
-          <div class="ov-num">03</div>
-          <div class="ov-city">잘츠카머구트</div>
-          <div class="ov-en">Salzkammergut, Austria</div>
-          <div class="ov-dates">5/19 (화) ~ 5/21 (목)</div>
-          <div class="ov-nights">2박</div>
-          <div class="ov-transport">🚗 렌터카 잘츠부르크 픽업</div>
-        </a>
-        <a href="#city-czech" class="overview-card" onclick="scrollToCity('city-czech')">
-          <div class="ov-num">04</div>
-          <div class="ov-city">체스키크룸로프</div>
-          <div class="ov-en">Český Krumlov, Czech</div>
-          <div class="ov-dates">5/21 (목) ~ 5/22 (금)</div>
-          <div class="ov-nights">1박</div>
-          <div class="ov-transport">🚗 렌터카 2시간 30분</div>
-        </a>
-        <a href="#city-prague" class="overview-card" onclick="scrollToCity('city-prague')">
-          <div class="ov-num">05</div>
-          <div class="ov-city">프라하</div>
-          <div class="ov-en">Praha, Czech Republic</div>
-          <div class="ov-dates">5/22 (금) ~ 5/25 (월)</div>
-          <div class="ov-nights">3박</div>
-          <div class="ov-transport">🚗 렌터카 반납 · 5/25 19:05 귀국</div>
-        </a>
-      </div>
+  <div class="tab-panel active" id="tab-itinerary" style="display:block;">
+    <!-- 도시별 서브탭 네비 -->
+    <div class="city-tabs-nav">
+      
+        <button class="city-tab active" data-city="vienna" style="--ctab-color:var(--vienna);">
+          🇦🇹 비엔나<span class="city-tab-nights">3박 · 5/15~5/18</span>
+        </button>
+        <button class="city-tab" data-city="salzburg" style="--ctab-color:var(--salzburg);">
+          🇦🇹 잘츠부르크<span class="city-tab-nights">1박 · 5/18~5/19</span>
+        </button>
+        <button class="city-tab" data-city="lake" style="--ctab-color:#2D85B5;">
+          🇦🇹 잘츠카머구트·첼암제<span class="city-tab-nights">2박 · 5/19~5/21</span>
+        </button>
+        <button class="city-tab" data-city="czech" style="--ctab-color:var(--czech);">
+          🇨🇿 체스키크룸로프<span class="city-tab-nights">1박 · 5/21~5/22</span>
+        </button>
+        <button class="city-tab" data-city="prague" style="--ctab-color:var(--prague);">
+          🇨🇿 프라하<span class="city-tab-nights">3박 · 5/22~5/25</span>
+        </button>
     </div>
-
-    <!-- Layout: sidebar + content -->
-    <div class="itinerary-layout">
-
-      <!-- SIDEBAR -->
-      <nav class="city-sidebar" id="city-sidebar">
-        <div class="sidebar-label">목적지</div>
-        <div class="sidebar-city active" data-city="city-vienna" onclick="scrollToCity('city-vienna')">
-          <div class="sidebar-city-dot" style="background:#8B1A2B;"></div>
-          <div class="sidebar-city-info">
-            <div class="sidebar-city-name">비엔나</div>
-            <div class="sidebar-city-sub">5/15~18 · 3박</div>
-          </div>
-        </div>
-        <div class="sidebar-city" data-city="city-salzburg" onclick="scrollToCity('city-salzburg')">
-          <div class="sidebar-city-dot" style="background:#B8762A;"></div>
-          <div class="sidebar-city-info">
-            <div class="sidebar-city-name">잘츠부르크</div>
-            <div class="sidebar-city-sub">5/18~19 · 1박</div>
-          </div>
-        </div>
-        <div class="sidebar-city" data-city="city-lake" onclick="scrollToCity('city-lake')">
-          <div class="sidebar-city-dot" style="background:#1A5F8A;"></div>
-          <div class="sidebar-city-info">
-            <div class="sidebar-city-name">잘츠카머구트</div>
-            <div class="sidebar-city-sub">5/19~21 · 2박</div>
-          </div>
-        </div>
-        <div class="sidebar-city" data-city="city-czech" onclick="scrollToCity('city-czech')">
-          <div class="sidebar-city-dot" style="background:#2D5A3D;"></div>
-          <div class="sidebar-city-info">
-            <div class="sidebar-city-name">체스키크룸로프</div>
-            <div class="sidebar-city-sub">5/21~22 · 1박</div>
-          </div>
-        </div>
-        <div class="sidebar-city" data-city="city-prague" onclick="scrollToCity('city-prague')">
-          <div class="sidebar-city-dot" style="background:#5B3987;"></div>
-          <div class="sidebar-city-info">
-            <div class="sidebar-city-name">프라하</div>
-            <div class="sidebar-city-sub">5/22~25 · 3박</div>
-          </div>
-        </div>
-        <div class="sidebar-divider"></div>
-        <div class="sidebar-city" onclick="switchTab('accom',document.querySelector('[data-tab=accom]'))" style="font-size:12px;opacity:.6;">
-          🏨 숙소 비교 보기 →
-        </div>
-      </nav>
-
-      <!-- CITY SECTIONS -->
-      <div class="itinerary-content" id="itinerary-content">
-
-        <!-- ① VIENNA -->
+    <!-- 도시별 패널 -->
+    <div class="city-panels">
+      
+      <div class="city-panel active" id="panel-vienna">
+        <!-- 기존 관광지 정보 -->
         <div class="city-section" id="city-vienna" data-city-id="city-vienna">
           <div class="city-header reveal">
             <div>
@@ -359,11 +318,11 @@ footer .gold{color:var(--gold);}
           </div>
           <!-- Special Event -->
           <div class="special-event reveal">
-            <div class="event-icon">🎭</div>
+            <div class="event-icon">🍽️</div>
             <div>
-              <div class="event-label">Special Event</div>
-              <div class="event-title">5월 16일 (토) 저녁 7시 · 빈 국립 오페라 극장</div>
-              <div class="event-desc">발레 &lt;마농&gt; 공연 관람 — 세계 3대 오페라 극장에서 즐기는 특별한 저녁</div>
+              <div class="event-label">✅ 예약 완료 · Special Dinner</div>
+              <div class="event-title">5월 16일 (토) 18:00 · Das LOFT (SO/ Vienna 18F)</div>
+              <div class="event-desc">창가자리 · 4 Courses · 3인 — 비엔나 360° 파노라마 뷰 미슐랭급 레스토랑</div>
             </div>
           </div>
 
@@ -447,9 +406,109 @@ footer .gold{color:var(--gold);}
         </div>
 
         <!-- TRANSPORT -->
-        <div class="transport-row"><div class="transport-pill">🚂 비엔나 → 잘츠부르크 · 레일젯 직통 약 2시간 30분</div></div>
+        <div class="transport-row"><div class="transport-pill">🚂 비엔나 → 잘츠부르크 · ✅ RJX 562 · 09:28 Wien HBF → 11:53 Salzburg HBF · Wagen 34 · 좌석 64·65·66</div></div>
 
         <!-- ② SALZBURG -->
+        <!-- 날짜별 일정 -->
+        <div class="day-schedule-wrap">
+          <h3 class="day-schedule-title" style="color:var(--vienna);">📅 날짜별 일정</h3>
+          
+          <div class="day-block" id="day-v1">
+            <div class="day-header">
+              <span class="day-badge">5/15 금 · 도착</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-v2">
+            <div class="day-header">
+              <span class="day-badge">5/16 토</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content">🍽️ <strong>Das LOFT</strong> 예약 18:00 · SO/ Vienna 18층<br>창가자리 · 4 Courses · 3인 · 비엔나 360° 야경</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-v3">
+            <div class="day-header">
+              <span class="day-badge">5/17 일</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-v4">
+            <div class="day-header">
+              <span class="day-badge">5/18 월 · 잘츠부르크 이동</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content">🚂 <strong>Wien HBF 09:28 출발</strong> → Salzburg HBF 11:53 도착<br>RJX 562 · Wagen 34 · 좌석 64(통로) · 65·66(창가)<br>Novotel 체크아웃 후 역 도보 1분</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="city-panel" id="panel-salzburg">
+        <!-- 기존 관광지 정보 -->
         <div class="city-section" id="city-salzburg" data-city-id="city-salzburg" style="background:#f0ebe0;">
           <div class="city-header reveal">
             <div>
@@ -511,6 +570,60 @@ footer .gold{color:var(--gold);}
         <div class="transport-row" style="background:#f0ebe0;"><div class="transport-pill">🚗 렌터카로 잘츠카머구트 자유 이동</div></div>
 
         <!-- ③ SALZKAMMERGUT -->
+        <!-- 날짜별 일정 -->
+        <div class="day-schedule-wrap">
+          <h3 class="day-schedule-title" style="color:var(--salzburg);">📅 날짜별 일정</h3>
+          
+          <div class="day-block" id="day-s1">
+            <div class="day-header">
+              <span class="day-badge">5/18 월 · 체크인</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content">🚂 <strong>Salzburg HBF 11:53 도착</strong> (Wien HBF 09:28 출발)<br>arte Hotel Salzburg까지 역 도보 2분 · 짐 맡기고 구시가 바로 출발<br>체크인 15:00</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-s2">
+            <div class="day-header">
+              <span class="day-badge">5/19 화 · 고사우 이동</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="city-panel" id="panel-lake">
+        <!-- 기존 관광지 정보 -->
         <div class="city-section" id="city-lake" data-city-id="city-lake">
           <div class="city-header reveal">
             <div>
@@ -575,6 +688,83 @@ footer .gold{color:var(--gold);}
         <div class="transport-row"><div class="transport-pill">🚗 첼암제 → 체스키크룸로프 · 렌터카 약 2시간 30분 (오스트리아→체코 국경 통과)</div></div>
 
         <!-- ④ ČESKÝ KRUMLOV -->
+        <!-- 날짜별 일정 -->
+        <div class="day-schedule-wrap">
+          <h3 class="day-schedule-title" style="color:#2D85B5;">📅 날짜별 일정</h3>
+          
+          <div class="day-block" id="day-l1">
+            <div class="day-header">
+              <span class="day-badge">5/19 화 · 고사우</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-l2">
+            <div class="day-header">
+              <span class="day-badge">5/20 수 · 첼암제</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-l3">
+            <div class="day-header">
+              <span class="day-badge">5/21 목 · 크룸로프 이동</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="city-panel" id="panel-czech">
+        <!-- 기존 관광지 정보 -->
         <div class="city-section" id="city-czech" data-city-id="city-czech" style="background:#f0ebe0;">
           <div class="city-header reveal">
             <div>
@@ -624,6 +814,60 @@ footer .gold{color:var(--gold);}
         <div class="transport-row" style="background:#f0ebe0;"><div class="transport-pill">🚗 체스키크룸로프 → 프라하 · 렌터카 약 2시간 30분 → 프라하 시내 렌터카 반납</div></div>
 
         <!-- ⑤ PRAGUE -->
+        <!-- 날짜별 일정 -->
+        <div class="day-schedule-wrap">
+          <h3 class="day-schedule-title" style="color:var(--czech);">📅 날짜별 일정</h3>
+          
+          <div class="day-block" id="day-c1">
+            <div class="day-header">
+              <span class="day-badge">5/21 목 · 체크인</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-c2">
+            <div class="day-header">
+              <span class="day-badge">5/22 금 · 프라하 이동</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="city-panel" id="panel-prague">
+        <!-- 기존 관광지 정보 -->
         <div class="city-section" id="city-prague" data-city-id="city-prague">
           <div class="city-header reveal">
             <div>
@@ -687,12 +931,112 @@ footer .gold{color:var(--gold);}
           </div>
         </div>
 
-      </div><!-- /itinerary-content -->
-    </div><!-- /itinerary-layout -->
-  </div><!-- /tab-itinerary -->
 
   <!-- ══════════════════ TAB: 숙소 비교 ══════════════════ -->
-  <div class="tab-panel" id="tab-accom">
+  <div class="t
+        <!-- 날짜별 일정 -->
+        <div class="day-schedule-wrap">
+          <h3 class="day-schedule-title" style="color:var(--prague);">📅 날짜별 일정</h3>
+          
+          <div class="day-block" id="day-p1">
+            <div class="day-header">
+              <span class="day-badge">5/22 금 · 체크인</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-p2">
+            <div class="day-header">
+              <span class="day-badge">5/23 토</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-p3">
+            <div class="day-header">
+              <span class="day-badge">5/24 일</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-block" id="day-p4">
+            <div class="day-header">
+              <span class="day-badge">5/25 월 · 출발</span>
+            </div>
+            <div class="timeline">
+              <div class="tl-slot">
+                <div class="tl-time">오전</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">점심</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">오후</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+              <div class="tl-slot">
+                <div class="tl-time">저녁</div>
+                <div class="tl-content empty">일정을 입력하세요</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div><!-- /tab-itinerary -->
+
+  <div class="tab-panel" id="tab-accom" style="display:none;">
     <div class="accom-layout">
 
       <!-- ── 숙소 요약 표 ── -->
@@ -708,10 +1052,9 @@ footer .gold{color:var(--gold);}
                 <th>박수</th>
                 <th>객실 구성</th>
                 <th>조식</th>
-                <th>수영장</th>
                 <th>사우나</th>
                 <th>피트니스</th>
-                <th>루프탑/라운지</th>
+                <th>루프탑/<br>라운지</th>
                 <th>체크인</th>
                 <th>체크아웃</th>
                 <th>예약처</th>
@@ -724,10 +1067,9 @@ footer .gold{color:var(--gold);}
                 <td>5/15 ~ 5/18</td>
                 <td class="center">3</td>
                 <td>Standard Family Room × 2<br><span class="room-note">커넥팅룸 요청</span></td>
-                <td class="center na">—</td>
-                <td class="center na">—</td>
-                <td class="center ok">✓ 19F</td>
-                <td class="center ok">✓ 19F</td>
+                <td class="center sauna-x">X</td>
+                <td class="center sauna-o">O</td>
+                <td class="center fit-o">O</td>
                 <td class="center na">바/라운지</td>
                 <td class="center">15:00</td>
                 <td class="center">12:00</td>
@@ -739,14 +1081,13 @@ footer .gold{color:var(--gold);}
                 <td>5/18 ~ 5/19</td>
                 <td class="center">1</td>
                 <td>Extended Studio Low × 1<br><span class="room-note">트윈베드 + 엑스트라베드 요청</span></td>
-                <td class="center ok">✓ 포함</td>
-                <td class="center na">—</td>
-                <td class="center ok">✓ 2F</td>
-                <td class="center ok">✓ 2F</td>
-                <td class="center ok">✓ hu:goes14 (14F)</td>
+                <td class="center sauna-o">O</td>
+                <td class="center sauna-o">O</td>
+                <td class="center fit-o">O</td>
+                <td class="center rooftop-o">O · 14F</td>
                 <td class="center">15:00</td>
                 <td class="center">11:00</td>
-                <td class="center">하나투어<br><span class="room-note">KB카드전용</span></td>
+                <td class="center">하나투어<br><span class="room-note">공홈</span></td>
               </tr>
               <tr>
                 <td>🇦🇹 잘츠카머구트</td>
@@ -754,11 +1095,10 @@ footer .gold{color:var(--gold);}
                 <td>5/19 ~ 5/20</td>
                 <td class="center">1</td>
                 <td>Gosaukamm Family Connect Room × 1<br><span class="room-note">커넥팅 도어 요청</span></td>
-                <td class="center ok">✓ 하프보드</td>
-                <td class="center na">—</td>
-                <td class="center ok">✓ 2개</td>
-                <td class="center ok">✓</td>
-                <td class="center na">테라스 바</td>
+                <td class="center sauna-o">O</td>
+                <td class="center sauna-o">O</td>
+                <td class="center fit-o">O</td>
+                <td class="center na">테라스</td>
                 <td class="center">15:00</td>
                 <td class="center">10:00</td>
                 <td class="center">공홈</td>
@@ -769,11 +1109,10 @@ footer .gold{color:var(--gold);}
                 <td>5/20 ~ 5/21</td>
                 <td class="center">1</td>
                 <td>Double Room Panorama × 2<br><span class="room-note">커넥팅룸 요청</span></td>
-                <td class="center ok">✓ 하프보드</td>
-                <td class="center ok">✓ 20,000㎡</td>
-                <td class="center ok">✓</td>
-                <td class="center ok">✓</td>
-                <td class="center na">—</td>
+                <td class="center sauna-o">O</td>
+                <td class="center sauna-o">O</td>
+                <td class="center fit-o">O</td>
+                <td class="center na">X</td>
                 <td class="center">15:00</td>
                 <td class="center">11:00</td>
                 <td class="center">공홈<br><span class="room-note">현장결제</span></td>
@@ -785,10 +1124,9 @@ footer .gold{color:var(--gold);}
                 <td class="center">1</td>
                 <td>Superior Quadruple Room × 1<br><span class="room-note">97㎡ 단독 사용</span></td>
                 <td class="center na">—</td>
-                <td class="center na">—</td>
-                <td class="center na">—</td>
-                <td class="center na">—</td>
-                <td class="center na">정원 테라스</td>
+                <td class="center sauna-x">X</td>
+                <td class="center fit-x">X</td>
+                <td class="center na">정원</td>
                 <td class="center">14:00</td>
                 <td class="center">11:00</td>
                 <td class="center">아고다</td>
@@ -800,10 +1138,9 @@ footer .gold{color:var(--gold);}
                 <td class="center">3</td>
                 <td>Junior Suite × 1<br><span class="room-note">35㎡ · 강변 뷰</span></td>
                 <td class="center na">—</td>
-                <td class="center ok">✓ 실내</td>
-                <td class="center ok">✓</td>
-                <td class="center ok">✓</td>
-                <td class="center ok">✓ Casablanca (6F)</td>
+                <td class="center sauna-o">O</td>
+                <td class="center fit-o">O</td>
+                <td class="center rooftop-o">O · 6F</td>
                 <td class="center">15:00</td>
                 <td class="center">11:00</td>
                 <td class="center">아고다</td>
@@ -857,7 +1194,7 @@ footer .gold{color:var(--gold);}
                 <span class="amenity-tag gold">🍽️ THE FLAVE 레스토랑</span>
                 <span class="amenity-tag">🍺 바/라운지</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 19층 사우나+피트니스에서 비엔나 파노라마 뷰</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 19층 사우나+피트니스에서 비엔나 파노라마 뷰</div>
               
             </div>
           </div>
@@ -887,7 +1224,7 @@ footer .gold{color:var(--gold);}
               <div class="hotel-name">arte Hotel Salzburg</div>
               <div class="hotel-space-badge" style="background:#EAF3DE;color:#27500A;">✦ 렌터카 픽업 도보 2분 · 지하주차장 보유</div>
               <div class="hotel-specs">
-                <div class="hotel-spec"><span class="spec-label">예약번호</span><span class="spec-value">HH2633666978 · 하나투어 (KB카드전용)</span></div>
+                <div class="hotel-spec"><span class="spec-label">예약번호</span><span class="spec-value">HH2633699014 · 하나투어 공홈</span></div>
                 <div class="hotel-spec"><span class="spec-label">객실</span><span class="spec-value">Extended Studio Low · 조식 포함 · 성인 3명</span></div>
                 <div class="hotel-spec"><span class="spec-label">날짜</span><span class="spec-value">5/18 (월) 체크인 · 5/19 (화) 체크아웃 · 1박</span></div>
                 <div class="hotel-spec"><span class="spec-label">취소</span><span class="spec-value">5월 14일 16시까지 무료 취소 가능</span></div>
@@ -905,7 +1242,7 @@ footer .gold{color:var(--gold);}
                 <span class="amenity-tag gold">🍸 hu:goes14 루프탑바 (14F)</span>
                 <span class="amenity-tag green">🌅 SkyBREAKFAST (15F)</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 hu:goes14 바에서 잘츠부르크 전경 파노라마 — 강력 추천</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 hu:goes14 바에서 잘츠부르크 전경 파노라마 — 강력 추천</div>
               
             </div>
           </div>
@@ -953,7 +1290,7 @@ footer .gold{color:var(--gold);}
                 <span class="amenity-tag gold">🍽️ 레스토랑 (하프보드)</span>
                 <span class="amenity-tag">🍺 테라스 바</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 RELAX 구역: 사우나 2개 + 고사우캄 전망 릴랙세이션 룸</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 RELAX 구역: 사우나 2개 + 고사우캄 전망 릴랙세이션 룸</div>
             </div>
           </div>
         </div>
@@ -999,7 +1336,7 @@ footer .gold{color:var(--gold);}
                 <span class="amenity-tag highlight">🏋️ 피트니스</span>
                 <span class="amenity-tag gold">🍽️ 레스토랑 (하프보드)</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 알프스 뷰 스카이라인 풀 · 출발일도 스파 이용 가능</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 알프스 뷰 스카이라인 풀 · 출발일도 스파 이용 가능</div>
             </div>
           </div>
         </div>
@@ -1044,7 +1381,7 @@ footer .gold{color:var(--gold);}
                 <span class="amenity-tag green">🌿 프라이빗 정원</span>
                 <span class="amenity-tag">🅿️ 무료 주차</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 부티크 게스트하우스 특성상 스파 시설 없음 — 정원이 매력</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 부티크 게스트하우스 특성상 스파 시설 없음 — 정원이 매력</div>
             </div>
           </div>
         </div>
@@ -1090,14 +1427,14 @@ footer .gold{color:var(--gold);}
               <div class="hotel-note">※ 조식 별도 · 귀국 당일(5/25) 19:05 출발 — 체크아웃 후 체코 공항 이동 필요</div>
               <div class="amenity-row">
                 <span class="amenity-tag highlight">🏊 실내 수영장</span>
-                <span class="amenity-tag highlight">🧖 스파·사우나</span>
-                <span class="amenity-tag highlight">♨️ 스팀룸</span>
+                <span class="amenity-tag highlight">🧖 핀란드 사우나</span>
+                <span class="amenity-tag highlight">♨️ 스팀 사우나</span>
                 <span class="amenity-tag highlight">🏋️ 피트니스</span>
                 <span class="amenity-tag gold">🍸 루프탑바 Casablanca (6F)</span>
                 <span class="amenity-tag gold">⭐ MICHELIN 레스토랑 LEVITATE</span>
                 <span class="amenity-tag green">🍹 무료 미니바</span>
               </div>
-              <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;">💡 수영장+스파 무료 · 루프탑바에서 프라하성 야경</div>
+              <div style="font-size:11px;color:#6b6560;margin-bottom:4px;">💡 수영장+핀란드/스팀 사우나 무료 · 루프탑바에서 프라하성 야경 · 09:00~21:00</div>
               
             </div>
           </div>
@@ -1109,7 +1446,7 @@ footer .gold{color:var(--gold);}
   </div><!-- /tab-accom -->
 
   <!-- ══════════════════ TAB: 여행 팁 ══════════════════ -->
-  <div class="tab-panel" id="tab-tips">
+  <div class="tab-panel" id="tab-tips" style="display:none;">
     <div class="tips-panel">
       <div class="tips-inner">
         <span class="section-eyebrow">Travel Tips</span>
@@ -1160,11 +1497,17 @@ footer .gold{color:var(--gold);}
 <script>
 // ── TAB SWITCHING
 function switchTab(id, el) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
+  ['itinerary','accom','tips'].forEach(function(t) {
+    var panel = document.getElementById('tab-' + t);
+    if (panel) panel.style.display = (t === id) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.main-tab').forEach(function(t) { t.classList.remove('active'); });
   if (el) el.classList.add('active');
-  window.scrollTo({top: document.getElementById('main-tabs').offsetTop - 2, behavior:'smooth'});
+  var nav = document.getElementById('main-tabs');
+  if (nav) {
+    var navTop = nav.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({top: navTop, behavior:'smooth'});
+  }
 }
 
 // ── SCROLL TO CITY
@@ -1316,6 +1659,17 @@ const revealObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});
 },{threshold:0.07});
 revealEls.forEach(el=>revealObs.observe(el));
-</script>
+
+  // 도시 서브탭
+  document.querySelectorAll('.city-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.city-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.city).classList.add('active');
+    });
+  });
+
+  </script>
 </body>
 </html>
